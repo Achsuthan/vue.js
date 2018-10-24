@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Vue.js</title>
+        <script src="../assets/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <p v-if="show"> hello</p>
+            <button @click="show = !show">Click me</button>
+        </div>
+    </body>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                show: false
+            }
+        })
+    </script>
+</html>
