@@ -49,6 +49,9 @@
         </div>
         <script>
             new Vue({
+
+                //v-on can changed to @
+                //v-bind can change to :
                 el: "#app",
                 data: {
                     title: "Hello world!",
@@ -63,9 +66,16 @@
                 computed:{
                     //Computed function can be acess by Vue property 
                     //computed function will executed with the code analysis if there any changes related to the code only it will get triggered
+                    //Computed is a synchronous task
                     count1Result: function(){
                         console.log("computed")
                         return "result is " + this.incrementCount1
+                    }
+                },
+                watch: {
+                    //watch is a asynchronus task 
+                    incrementCount1 : function(value){
+                        console.log(value);
                     }
                 },
                 methods: {
