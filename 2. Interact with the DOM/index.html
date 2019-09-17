@@ -61,12 +61,15 @@
                     incrementCount2: 0,
                 },
                 computed:{
+                    //Computed function can be acess by Vue property 
+                    //computed function will executed with the code analysis if there any changes related to the code only it will get triggered
                     count1Result: function(){
                         console.log("computed")
                         return "result is " + this.incrementCount1
                     }
                 },
                 methods: {
+                    //Method always should access with the ()
                     getResult: function(){
                         console.log("Normal function")
                         return "Counter 1 value "+ this.incrementCount1 
