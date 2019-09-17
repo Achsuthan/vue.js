@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Vue.js</title>
+    </head>
+    <body>
+        <script src="../Js/vue.js"></script>
+        <!-- This app id is belongs to vue instance -->
+        <div id="app">
+            <p> {{title}}</p> <!--If we want to display a value to html from vue instance we should use {{}} open and close double curly bracket -->
+            <input type="text" v-on:input= "changeTitle"> <!--List the event when user type something in the input field-->
+        </div>
+
+        <script>
+            //First create instance for vue 
+            new Vue({
+                el: '#app', //Element can be a class or id if its id use #, class use.
+                data: { //Data is a object it will contain all the datas for application
+                    title: "Hello world!"
+                },
+                methods: { //all the mothod should be define inse the method object
+                    changeTitle: function(event){
+                        this.title = event.target.value
+                    }
+                },
+            });
+        </script>
+    </body>
+</html>

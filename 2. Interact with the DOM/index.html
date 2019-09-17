@@ -1,0 +1,107 @@
+<html>
+    <head>
+        <title>Vue.js</title>
+    </head>
+    <body>
+        <script src="../Js/vue.js"></script>
+        <div id="app">
+            <!-- V-Bind is use to bind the data from instance to html tags -->
+            <p> {{title}} - <a v-bind:href="link">Google</a></p>
+            <!-- v-once is used to  print the intial value of the property -->
+            <p v-once>{{title}}</p>
+            <!-- We can use the function insde the double curly bracket -->
+            <p>{{sayHello()}}</p>
+            <!-- v-html is used to render the vue property as a HTML content -->
+            <p v-html="finalizedLink"></p>
+            <!-- v-on:click is used to click event -->
+            <button v-on:click="buttonClicked"> Click Me</button>
+            <p>{{counter}}</p>
+            <!-- We can pass any data through function-->
+            <button v-on:click= "buttonCLicked(2)">Click Me</button>
+            <p>{{counter2}}</p>
+            <!-- With the $ sign we can pass the events to the method -->
+            <button v-on:click= "buttonEvent($event)" >Click Me</button>
+            <br/>
+            <br/>
+            <!-- v-on: keyup is used to when user type something trigger the event -->
+            <input type="text" v-on:keyup="valueChanged">
+            <br/>
+            <br/>
+            <!-- this will trigger the function when user put space or press enter key inside the textfield -->
+            <input type="text" v-on:keyup.enter.space= "specialEvent">
+
+            <br/>
+            <br/>
+            <!-- v-model is used to two way binding in vue.js -->
+            <input type="text" v-model="username" placeholder="Username">
+            <br/>
+            <br/>
+            <button v-on:click="getUsername()"> Click me to get username</button>
+            <br/>
+            <br/>
+            <button v-on:click="increase()"> ClickMe</button>
+            <br/>
+            <br/>
+            <button v-on:click = "increase2()">Clickme 2</button>
+            <br/>
+            <br/>
+            <label>{{getResult()}} || {{count1Result}}</label>
+        </div>
+        <script>
+            new Vue({
+                el: "#app",
+                data: {
+                    title: "Hello world!",
+                    link: "https://www.google.com",
+                    finalizedLink: "<a href= 'https://www.google.com'> Finalized Link</a>",
+                    counter: 0,
+                    counter2: 0,
+                    username: "", 
+                    incrementCount1: 0,
+                    incrementCount2: 0,
+                },
+                computed:{
+                    count1Result: function(){
+                        console.log("computed")
+                        return "result is " + this.incrementCount1
+                    }
+                },
+                methods: {
+                    getResult: function(){
+                        console.log("Normal function")
+                        return "Counter 1 value "+ this.incrementCount1 
+                    },
+                    increase: function(){
+                        this.incrementCount1++
+                        
+                    },
+                    increase2: function(){
+                        this.incrementCount2++
+                    },
+                    sayHello: function(){
+                        this.title = "Hello"
+                        return "Hello";
+                    },
+                    buttonClicked: function(){
+                        this.counter++;
+                    }, 
+                    buttonCLicked: function(value){
+                        this.counter2 = this.counter2 + value
+                    }, 
+                    buttonEvent: function(event){
+                        console.log(event)
+                    },
+                    valueChanged: function(event){
+                        console.log(event.target.value)
+                    },
+                    specialEvent: function(event){
+                        console.log("Special Event Trigged")
+                    },
+                    getUsername: function(){
+                        console.log(this.username)
+                    }
+                },
+            })
+        </script>
+    </body>
+</html>
