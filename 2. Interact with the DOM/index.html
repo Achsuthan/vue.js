@@ -3,6 +3,23 @@
         <title>Vue.js</title>
     </head>
     <body>
+        <style>
+            .demo {
+                width: 100px;
+                height: 100px;
+                background-color: gray;
+                display: inline-block;
+                margin: 10px;
+            }
+
+            .red{
+                background-color: red;
+            }
+
+            .blue {
+                background-color: blue;
+            }
+        </style>
         <script src="../Js/vue.js"></script>
         <div id="app">
             <!-- V-Bind is use to bind the data from instance to html tags -->
@@ -46,6 +63,22 @@
             <br/>
             <br/>
             <label>{{getResult()}} || {{count1Result}}</label>
+
+            <br/>
+            <br/>
+            <div 
+                class="demo" 
+                @click=" isCsschanged = !isCsschanged"
+                :class="divClasses" 
+            ></div><!--If we want to change CSS through vue we have to specify the class name with true false-->
+            <div class="demo" :class="{red: isCsschanged}" ></div>
+            <div class="demo" :class="[color, {red:isCsschanged}]"></div> <!--We can add multiple classes with array-->
+            <br/>
+            <input type="text" v-model="color">
+            <br/>
+            <br/>
+            <div :style="[divStyle, {height: 200 + 'px'}]"></div> <!--We can set the style with the property of :style="{OBJECT}", if we want to set multiple css we can set with array-->
+
         </div>
         <script>
             new Vue({
@@ -62,6 +95,13 @@
                     username: "", 
                     incrementCount1: 0,
                     incrementCount2: 0,
+                    isCsschanged: false,
+                    color: "green",
+                    divStyle: {
+                        "background-color": "purple",
+                        "width": "200px",
+                        "height": "100px",
+                    }
                 },
                 computed:{
                     //Computed function can be acess by Vue property 
@@ -70,6 +110,13 @@
                     count1Result: function(){
                         console.log("computed")
                         return "result is " + this.incrementCount1
+                    },
+                    //this computed property will return the css object for vue html
+                    divClasses: function(){
+                        return {
+                            red: this.isCsschanged,
+                            blue : !this.isCsschanged
+                        };
                     }
                 },
                 watch: {

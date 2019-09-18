@@ -1,0 +1,54 @@
+<html>
+<script src="../Js/vue.js"></script>
+
+<body>
+    <div id="app">
+        <!--v-if used to put a condtion in html-->
+        <p v-if="isShow">You can see me!</p> <!--If isShow is true then in the emelemts we can't see this p tag -->
+        <p>Do you also see my?</p>
+        <template v-if="isShow"> <!--inside the template we can put multiple html tag and put a conftion for all of them with one line of code-->
+            <p>This is for template</p>
+        </template>
+        <p v-show="isShow">This is for v-show</p> <!--if isShow became to true v-show will keep the data in the html elemtent and set display as none-->
+        <button @click="isShow = !isShow">Switch</button>
+        <p>This is to check the v-for</p>
+        <ul>
+            <li v-for="item in ingredients">{{item}}</li>
+        </ul>
+        <p>Get the index of an array</p>
+        <ul>
+            <li v-for="(item,i) in ingredients">{{item}}  ({{i}})</li> <!--We can get the vlaue and index of array by using (value, i)-->
+        </ul>
+
+        <p>Loop through object</p>
+        <ul>
+            <li v-for= "person in persons">
+                <span v-for="(value, key, index) in person">{{ key }} : {{ value }} {{ index }} <br/> <!--We can get the value key and index of object array by using (value, key, index)-->
+                </span>
+                
+            </li>
+        </ul>
+        <p>Looping throug numbers</p>
+        <ul>
+            <li v-for="i in 10">{{i}}</li>
+        </ul>
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                isShow: false,
+                ingredients: ['meat', 'fruit', 'cookies'],
+                persons:[
+                    {name: "Max", age:23},
+                    {name: 'Kate', age: 26},
+                ],
+            },
+            methods: {
+                
+            },
+        });
+    </script>
+</body>
+
+</html>
