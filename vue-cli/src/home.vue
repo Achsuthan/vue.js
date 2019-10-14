@@ -1,14 +1,16 @@
 <template>
 <div>
-    <p> Current status : {{status}}</p>
+    <template v-for ="server in 5">
+        <server-status :key="server"></server-status>
+    </template>
+    
 </div>
 </template>
 <script>
+import ServerStatus from './ServerStatus'
 export default {
-    data: function(){
-        return {
-            status: "Critical"
-        }
+    components:{
+        'server-status': ServerStatus
     }
 }
 </script>
