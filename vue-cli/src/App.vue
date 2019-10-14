@@ -6,7 +6,7 @@
 
 <script>
 import Vue from 'vue'
-import Home from './home.vue'
+import Home from './Components/home'
 
 Vue.component('Home', Home)
 </script>

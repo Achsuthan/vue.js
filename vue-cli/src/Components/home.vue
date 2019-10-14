@@ -7,7 +7,7 @@
 </div>
 </template>
 <script>
-import ServerStatus from './ServerStatus'
+import ServerStatus from '../Components/ServerStatus'
 export default {
     components:{
         'server-status': ServerStatus
